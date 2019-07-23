@@ -1,9 +1,10 @@
 const express = require("express");
-const mc = require("./controllers/messages_controller");
+const mc = require("./controllers/messages-controller");
 
 const app = express();
 
 app.use(express.json());
+app.use(express.static("node-2-afternoon" + "/../public/build"));
 
 const messagesBaseUrl = "/api/messages";
 app.post(messagesBaseUrl, mc.create);
@@ -13,5 +14,5 @@ app.delete(`${messagesBaseUrl}/:id`, mc.delete);
 
 const port = 3001;
 app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+  console.log(`Server listening on port ${port} `);
 });
